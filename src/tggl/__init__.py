@@ -38,7 +38,14 @@ class TgglClient(TgglResponse):
                 }
             )
 
-            return response.json()
+            if (response.status_code != 200 and 'error' in response.json()):
+                raise Exception('Tggl error: ' + response.json()['error'])
+
+            if (response.status_code != 200):
+                raise Exception('Tggl error: Invalid response from Tggl')
+
+
+            return [TgglResponse(flags) for flags in response.json()]
 
         except Exception as e:
             print(e)

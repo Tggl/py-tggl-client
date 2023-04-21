@@ -1,5 +1,5 @@
 .idea/
 /build/
 /dist/
-/tggl_client.egg-info/
 __pycache__/
+/tggl.egg-info/
